@@ -1,0 +1,65 @@
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.cart-page-wrapper {
+  background-color: #fdfdfd;
+  min-height: 90vh;
+}
+
+.thumb-img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.text-gold {
+  color: #d4a373 !important;
+}
+
+.btn-outline-gold {
+  color: #d4a373;
+  border-color: #d4a373;
+}
+
+.btn-outline-gold:hover {
+  background-color: #d4a373;
+  color: white;
+}
+
+.btn-luxury-gold {
+  background-color: #d4a373;
+  color: white;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-luxury-gold:hover {
+  background-color: #b88a5d;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(212, 163, 115, 0.4);
+}
+
+.summary-card {
+  position: sticky;
+  top: 100px;
+}
+
+.ls-1 {
+  letter-spacing: 1px;
+}
+
+.qty-control span {
+  min-width: 30px;
+  text-align: center;
+}
+
+/* Responsive fix */
+@media (max-width: 991px) {
+  .summary-card {
+    position: static;
+    margin-top: 20px;
+  }
+}

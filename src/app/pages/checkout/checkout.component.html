@@ -1,0 +1,42 @@
+<div class="checkout-container">
+    <h2>Thanh toán</h2>
+
+    <form (ngSubmit)="submit()">
+        <div class="form-group">
+            <label for="name">Họ và tên *</label>
+            <input type="text" id="name" [(ngModel)]="name" name="name" required placeholder="Nhập họ tên">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Số điện thoại *</label>
+            <input type="text" id="phone" [(ngModel)]="phone" name="phone" required placeholder="Nhập số điện thoại">
+        </div>
+
+        <div class="form-group">
+            <label for="date">Ngày cưới *</label>
+            <input type="date" id="date" [(ngModel)]="weddingDate" name="weddingDate" required>
+        </div>
+
+        <div class="form-group">
+            <label for="note">Ghi chú</label>
+            <textarea id="note" [(ngModel)]="note" name="note" rows="3"></textarea>
+        </div>
+
+        <div class="cart-box">
+            <h3>Đơn hàng của bạn</h3>
+            <div *ngFor="let item of cartService.items" class="cart-item">
+                <span>{{ item.name || item.title }} x {{ item.quantity }}</span>
+                <span>{{ (item.price * item.quantity) | number }} đ</span>
+            </div>
+            <hr>
+            <div class="total">
+                <strong>TỔNG CỘNG: {{ cartService.getTotalPrice() | number }} đ</strong>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-submit" [disabled]="loading">
+            <span *ngIf="loading">⌛ ĐANG XỬ LÝ...</span>
+            <span *ngIf="!loading">ĐẶT HÀNG</span>
+        </button>
+    </form>
+</div>

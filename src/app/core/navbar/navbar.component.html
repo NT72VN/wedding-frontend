@@ -1,0 +1,102 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" routerLink="/">
+            <img src="assets/images/logo/logo.png" alt="Wedding Pro Logo" class="navbar-logo" height="40"
+                onerror="this.src='https://placehold.co/40x40?text=WP'" />
+            <strong class="text-uppercase tracking-wider">Duc & Co. Weddings</strong>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-2">
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/products" routerLinkActive="active">Dịch vụ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/about" routerLinkActive="active">Giới thiệu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/contact" routerLinkActive="active">Liên hệ</a>
+                </li>
+
+                <li class="nav-item mx-lg-2">
+                    <a routerLink="/cart" class="nav-link position-relative btn btn-outline-secondary border-0 p-2">
+                        <span class="fs-5">🛒</span>
+                        <span *ngIf="cart.getTotalQuantity() > 0"
+                            class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle"
+                            style="font-size: 0.7rem;">
+                            {{ cart.getTotalQuantity() }}
+                        </span>
+                    </a>
+                </li>
+
+                <ng-container *ngIf="!auth.isLoggedIn()">
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light btn-sm px-3 ms-lg-2" routerLink="/login">Đăng nhập</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-warning btn-sm px-3 ms-lg-1" routerLink="/register">Đăng ký</a>
+                    </li>
+                </ng-container>
+
+                <ng-container *ngIf="auth.isLoggedIn() && user">
+                    <li class="nav-item dropdown ms-lg-3">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center gap-2 py-1" href="#" role="button"
+                            data-bs-toggle="dropdown">
+                            <img [src]="user.avatar || 'assets/images/user.png'"
+                                class="rounded-circle border border-secondary" width="32" height="32"
+                                style="object-fit: cover;">
+                            <span class="d-inline-block text-truncate" style="max-width: 100px;">{{ user.name }}</span>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end shadow-lg animate slideIn">
+                            <li>
+                                <h6 class="dropdown-header">Xin chào, {{ user.name }}</h6>
+                            </li>
+                            <li><a class="dropdown-item" routerLink="/profile">👤 Thông tin cá nhân</a></li>
+                            <li><a class="dropdown-item" routerLink="/my-orders">📦 Đơn hàng của tôi</a></li>
+
+                            <ng-container *ngIf="auth.isAdmin()">
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <h6 class="dropdown-header text-warning">Khu vực quản lý</h6>
+                                </li>
+                                <li><a class="dropdown-item" routerLink="/admin/products">📦 Quản lý sản phẩm</a></li>
+                                <li><a class="dropdown-item" routerLink="/admin/categories">🏷️ Quản lý loại sản
+                                        phẩm</a></li>
+                                <li><a class="dropdown-item" routerLink="/admin/orders">📝 Quản lý đơn hàng</a></li>
+                                <li><a class="dropdown-item" routerLink="/admin/users">👥 Quản lý người dùng</a></li>
+                                <li>
+                                    <a class="dropdown-item fw-bold text-primary" routerLink="/admin">
+                                        ⚙️ Tổng quan hệ thống
+                                    </a>
+                                </li>
+                            </ng-container>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <button class="dropdown-item text-danger d-flex align-items-center gap-2"
+                                    (click)="auth.logout()">
+                                    <span>🚪</span> Đăng xuất
+                                </button>
+                            </li>
+                        </ul>
+                    </li>
+                </ng-container>
+
+            </ul>
+        </div>
+    </div>
+</nav>

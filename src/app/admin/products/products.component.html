@@ -1,0 +1,57 @@
+<div class="admin-layout-wrapper">
+    <div class="container py-5">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="title-area">
+                <h2 class="fw-bold admin-main-title">QUẢN LÝ DỊCH VỤ</h2>
+                <p class="text-muted mb-0">Hệ thống quản trị nội dung Duc & Co. Weddings</p>
+            </div>
+            <a routerLink="/admin/products/create" class="btn btn-luxury-gold">
+                <i class="bi bi-plus-circle me-2"></i>THÊM DỊCH VỤ
+            </a>
+        </div>
+
+        <div class="table-container shadow-sm" *ngIf="!loading">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th class="text-center">STT</th>
+                        <th>Hình ảnh</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Giá dịch vụ</th>
+                        <th class="text-center">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of products; let i = index">
+                        <td class="text-center">{{ i + 1 }}</td>
+                        <td>
+                            <div class="admin-img-crop">
+                                <img [src]="p.image" onerror="this.src='assets/images/default.jpg'">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="fw-bold">{{ p.name }}</div>
+                            <span class="category-badge">{{ p.category }}</span>
+                        </td>
+                        <td class="admin-price">{{ p.price | number }} đ</td>
+                        <td class="text-center">
+                            <div class="d-flex justify-content-center gap-2">
+                                <a [routerLink]="['/admin/products/edit', p._id]" class="btn-edit">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <button (click)="delete(p._id)" class="btn-delete">
+                                    <i class="bi bi-trash3"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div *ngIf="loading" class="text-center py-5">
+            <div class="spinner-border text-warning"></div>
+        </div>
+    </div>
+</div>

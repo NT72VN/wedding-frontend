@@ -1,0 +1,32 @@
+<div class="container mt-5" style="max-width:400px">
+    <h3 class="mb-3 text-center text-uppercase fw-bold" style="color: #c89b3c;">Đăng nhập</h3>
+
+    <div class="mb-3">
+        <label class="form-label small fw-bold">EMAIL</label>
+        <input class="form-control" type="email" placeholder="email@example.com" [(ngModel)]="email">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label small fw-bold">MẬT KHẨU</label>
+        <input class="form-control" type="password" placeholder="********" [(ngModel)]="password">
+    </div>
+
+    <button class="btn btn-gold w-100 py-2 mb-3" (click)="submit()"
+        style="background-color: #c89b3c; color: white; border: none;">
+        ĐĂNG NHẬP
+    </button>
+
+    <div class="d-flex justify-content-between align-items-center mt-2">
+        <a routerLink="/forgot-password" class="text-decoration-none small text-muted italic">
+            Quên mật khẩu?
+        </a>
+        <a routerLink="/register" class="text-decoration-none small fw-bold" style="color: #c89b3c;">
+            Đăng ký tài khoản
+        </a>
+    </div>
+
+    <div class="alert alert-light border mt-4 small">
+        <p class="mb-1 text-muted fw-bold">Tài khoản mẫu:</p>
+        Admin: admin@gmail.com | User: user@gmail.com
+    </div>
+</div>

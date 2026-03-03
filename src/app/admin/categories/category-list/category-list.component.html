@@ -1,0 +1,34 @@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>📂 Quản lý loại sản phẩm</h2>
+        <button class="btn btn-primary" routerLink="/admin/categories/create">
+            ➕ Thêm loại
+        </button>
+    </div>
+
+    <table border="1" width="100%" cellpadding="8" style="border-collapse: collapse; border: 1px solid #ddd;">
+        <thead style="background-color: #f8f9fa;">
+            <tr>
+                <th>STT</th>
+                <th>Tên loại</th>
+                <th>Mô tả</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of categories; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td class="fw-bold">{{ c.name }}</td>
+                <td>{{ c.description }}</td>
+                <td>
+                    <button class="btn btn-sm btn-warning me-2" (click)="edit(c._id || c.id)">✏️ Sửa</button>
+                    <button class="btn btn-sm btn-danger" (click)="delete(c._id || c.id)">🗑 Xóa</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="categories.length === 0" class="text-center py-4 text-muted">
+        Chưa có loại sản phẩm nào hoặc đang tải dữ liệu...
+    </div>
+</div>

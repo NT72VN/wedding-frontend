@@ -1,0 +1,49 @@
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-header bg-success text-white">
+      <h3 class="mb-0">{{ isEdit ? 'Cập nhật dịch vụ' : 'Thêm dịch vụ mới' }}</h3>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="save()">
+        <div class="mb-3">
+          <label class="form-label fw-bold">Tên sản phẩm/dịch vụ</label>
+          <input type="text" class="form-control" [(ngModel)]="product.name" name="name" required>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-bold">Giá tiền (VNĐ)</label>
+            <input type="number" class="form-control" [(ngModel)]="product.price" name="price" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-bold">Danh mục</label>
+            <select class="form-control" [(ngModel)]="product.category" name="category">
+              <option value="Decor">Trang trí</option>
+              <option value="Photo">Chụp ảnh</option>
+              <option value="Food">Ẩm thực</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-bold">Hình ảnh sản phẩm</label>
+          <input type="file" class="form-control" (change)="onFileSelected($event)" accept="image/*">
+
+          <div *ngIf="product.image" class="mt-2">
+            <img [src]="product.image" alt="Preview" style="max-height: 150px;" class="img-thumbnail">
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-bold">Mô tả</label>
+          <textarea class="form-control" rows="3" [(ngModel)]="product.description" name="description"></textarea>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-primary px-4">Lưu dữ liệu</button>
+          <a routerLink="/admin/products" class="btn btn-secondary px-4">Hủy bỏ</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

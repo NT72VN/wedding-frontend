@@ -1,0 +1,130 @@
+<div class="container-fluid p-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-dark">📊 Tổng quan hệ thống</h2>
+        <span class="badge bg-info text-dark p-2">Cập nhật: {{ today | date:'dd/MM/yyyy HH:mm' }}</span>
+    </div>
+
+    <div *ngIf="loading" class="text-center my-5">
+        <div class="spinner-border text-primary" role="status"></div>
+        <p class="mt-2">Đang xử lý dữ liệu...</p>
+    </div>
+
+    <div class="row g-4" *ngIf="!loading">
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm bg-primary text-white h-100">
+                <div class="card-body d-flex align-items-center">
+                    <div class="flex-grow-1">
+                        <h6 class="text-white-50">Tổng Dịch Vụ</h6>
+                        <h2 class="fw-bold mb-0">{{ stats.totalProducts }}</h2>
+                    </div>
+                    <div class="fs-1 opacity-25">📦</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm bg-success text-white h-100">
+                <div class="card-body d-flex align-items-center">
+                    <div class="flex-grow-1">
+                        <h6 class="text-white-50">Đơn Đã Giao</h6>
+                        <h2 class="fw-bold mb-0">{{ stats.totalOrders }}</h2>
+                    </div>
+                    <div class="fs-1 opacity-25">📜</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm bg-warning text-dark h-100">
+                <div class="card-body d-flex align-items-center">
+                    <div class="flex-grow-1">
+                        <h6 class="text-dark-50">Đang Chờ Duyệt</h6>
+                        <h2 class="fw-bold mb-0">{{ stats.pendingOrders }}</h2>
+                    </div>
+                    <div class="fs-1 opacity-25">⏳</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 shadow-sm bg-danger text-white h-100">
+                <div class="card-body d-flex align-items-center">
+                    <div class="flex-grow-1">
+                        <h6 class="text-white-50">Tổng Doanh Thu</h6>
+                        <h2 class="fw-bold mb-0">{{ stats.totalRevenue | number }}đ</h2>
+                    </div>
+                    <div class="fs-1 opacity-25">💰</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5" *ngIf="!loading">
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm p-4 h-100">
+                <h5 class="fw-bold mb-4 text-primary"><i class="bi bi-graph-up-arrow me-2"></i>Doanh thu theo tháng</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Thời gian</th>
+                                <th class="text-end">Doanh thu (VNĐ)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let m of monthlyRevenue">
+                                <td>{{ m.month }}</td>
+                                <td class="text-end fw-bold">{{ m.amount | number }}đ</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm p-4 h-100">
+                <h5 class="fw-bold mb-4 text-success"><i class="bi bi-star-fill me-2"></i>Sản phẩm bán chạy</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Sản phẩm</th>
+                                <th class="text-center">Số lượng</th>
+                                <th class="text-end">Thành tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let p of topSellingProducts">
+                                <td class="text-truncate" style="max-width: 150px;">{{ p.name }}</td>
+                                <td class="text-center">{{ p.quantity }}</td>
+                                <td class="text-end">{{ p.total | number }}đ</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5" *ngIf="!loading">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm p-4">
+                <h5 class="fw-bold mb-3">Thông báo hệ thống</h5>
+                <div class="alert alert-light border">
+                    ✅ Toàn bộ hệ thống Frontend và Backend đã được kết nối thành công.
+                </div>
+                <div class="alert alert-light border">
+                    🛡️ Admin Guard đang bảo vệ các tuyến đường quản trị.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm p-4 text-center bg-dark text-white">
+                <h5 class="mb-3">Lối tắt</h5>
+                <div class="d-grid gap-2">
+                    <a routerLink="/admin/products" class="btn btn-outline-light btn-sm">Quản lý sản phẩm</a>
+                    <a routerLink="/admin/orders" class="btn btn-outline-light btn-sm">Quản lý đơn hàng</a>
+                    <a routerLink="/admin/users" class="btn btn-outline-light btn-sm">Quản lý khách hàng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

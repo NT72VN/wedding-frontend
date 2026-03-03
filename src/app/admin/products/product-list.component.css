@@ -1,0 +1,99 @@
+/* --- KHUNG BAO NGOÀI QUAN TRỌNG NHẤT --- */
+.admin-layout-wrapper {
+  background-color: #fcfcfc;
+  min-height: 80vh; /* Ép nội dung chiếm ít nhất 80% chiều cao màn hình */
+  display: block;
+  overflow: hidden; /* Cắt bỏ các phần tử con bị tràn lung tung */
+  position: relative;
+  z-index: 1;
+}
+
+/* --- CONTAINER ĐẨY FOOTER --- */
+.container {
+  margin-bottom: 100px !important; /* Tạo khoảng trống an toàn cực lớn với Footer */
+  clear: both;
+}
+
+/* --- BẢNG CHỐNG TRÀN --- */
+.table-container {
+  background: #fff;
+  border-radius: 15px;
+  border: 1px solid #eee;
+  overflow: visible; /* Để các dropdown hoặc tooltip không bị mất */
+  margin-bottom: 50px;
+}
+
+/* Header bảng đen - chữ vàng */
+.table thead th {
+  background: #111 !important;
+  color: #c89b3c !important;
+  padding: 18px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  border: none;
+}
+
+/* --- HÌNH ẢNH --- */
+.admin-img-crop {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+}
+.admin-img-crop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- STYLE PHỤ --- */
+.admin-main-title {
+  font-family: 'Playfair Display', serif;
+  color: #111;
+}
+
+.admin-price {
+  color: #c89b3c;
+  font-weight: 700;
+}
+
+.btn-luxury-gold {
+  background: #c89b3c;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-luxury-gold:hover {
+  background: #111;
+  color: #c89b3c;
+}
+
+/* Nút hành động */
+.btn-edit,
+.btn-delete {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: none;
+  transition: 0.2s;
+}
+.btn-edit {
+  background: #f0f7ff;
+  color: #007bff;
+}
+.btn-delete {
+  background: #fff5f5;
+  color: #dc3545;
+}
+.btn-edit:hover,
+.btn-delete:hover {
+  transform: scale(1.1);
+}

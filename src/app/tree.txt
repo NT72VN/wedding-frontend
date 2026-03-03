@@ -1,0 +1,189 @@
+Folder PATH listing for volume Acer
+Volume serial number is FA73-20BA
+C:.
+|   app.component.html
+|   app.component.ts
+|   app.config.ts
+|   app.css
+|   app.routes.ts
+|   app.spec.ts
+|   tree.txt
+|   
++---admin
+|   |   admin.routes.ts
+|   |   
+|   +---categories
+|   |   |   categories-routing.module.ts
+|   |   |   category.model.ts
+|   |   |   category.service.ts
+|   |   |   
+|   |   +---category-form
+|   |   |       category-form.component.html
+|   |   |       category-form.component.ts
+|   |   |       
+|   |   \---category-list
+|   |           category-list.component.html
+|   |           category-list.component.ts
+|   |           
+|   +---dashboard
+|   |       dashboard.component.css
+|   |       dashboard.component.html
+|   |       dashboard.component.ts
+|   |       dashboard.spec.ts
+|   |       
+|   +---layout
+|   |       admin-layout.component.css
+|   |       admin-layout.component.html
+|   |       admin-layout.component.ts
+|   |       
+|   +---orders
+|   |       order-detail.component.css
+|   |       order-detail.component.html
+|   |       order-detail.component.ts
+|   |       order-list.component.html
+|   |       order-list.component.ts
+|   |       order.model.ts
+|   |       orders.component.css
+|   |       orders.component.html
+|   |       orders.component.ts
+|   |       
+|   +---products
+|   |       product-form.component.css
+|   |       product-form.component.html
+|   |       product-form.component.ts
+|   |       product-list.component.css
+|   |       product.model.ts
+|   |       products.component.html
+|   |       products.component.ts
+|   |       products.spec.ts
+|   |       products.ts
+|   |       
+|   +---services
+|   |       admin-category.service.ts
+|   |       admin-dashboard.service.ts
+|   |       admin-order.service.ts
+|   |       admin-product.service.ts
+|   |       admin-user.service.ts
+|   |       
+|   \---users
+|           users.component.css
+|           users.component.html
+|           users.component.spec.ts
+|           users.component.ts
+|           
++---auth
+|   |   auth-module.ts
+|   |   auth-routing-module.ts
+|   |   auth.spec.ts
+|   |   auth.ts
+|   |   
+|   +---forgot-password
+|   +---login
+|   |       login.component.css
+|   |       login.component.html
+|   |       login.component.ts
+|   |       login.spec.ts
+|   |       
+|   +---register
+|   |       register.component.css
+|   |       register.component.html
+|   |       register.component.ts
+|   |       register.spec.ts
+|   |       
+|   \---reset-password
++---core
+|   +---footer
+|   |       footer.component.css
+|   |       footer.component.html
+|   |       footer.component.ts
+|   |       footer.spec.ts
+|   |       
+|   +---guards
+|   |       admin.guard.ts
+|   |       auth.guard.ts
+|   |       
+|   +---interceptors
+|   |       auth.interceptor.ts
+|   |       
+|   \---navbar
+|           navbar.component.css
+|           navbar.component.html
+|           navbar.component.ts
+|           navbar.spec.ts
+|           
++---models
+|       order-item.model.ts
+|       order.model.ts
+|       product.model.ts
+|       user.model.ts
+|       
++---pages
+|   |   pages-module.ts
+|   |   pages-routing-module.ts
+|   |   
+|   +---about
+|   |       about.component.css
+|   |       about.component.html
+|   |       about.component.ts
+|   |       about.spec.ts
+|   |       
+|   +---cart
+|   |       cart.component.css
+|   |       cart.component.html
+|   |       cart.component.ts
+|   |       
+|   +---checkout
+|   |       checkout.component.css
+|   |       checkout.component.html
+|   |       checkout.component.ts
+|   |       
+|   +---contact
+|   |       contact.component.css
+|   |       contact.component.html
+|   |       contact.component.ts
+|   |       contact.spec.ts
+|   |       
+|   +---home
+|   |       home.component.css
+|   |       home.component.html
+|   |       home.component.ts
+|   |       home.spec.ts
+|   |       
+|   +---my-orders
+|   |       my-orders.component.css
+|   |       my-orders.component.html
+|   |       my-orders.component.ts
+|   |       
+|   +---order-detail
+|   |       order-detail.component.css
+|   |       order-detail.component.html
+|   |       order-detail.component.ts
+|   |       
+|   +---product-detail
+|   |       product-detail.component.css
+|   |       product-detail.component.html
+|   |       product-detail.component.ts
+|   |       product-detail.spec.ts
+|   |       
+|   +---products
+|   |       products.component.css
+|   |       products.component.html
+|   |       products.component.ts
+|   |       
+|   \---profile
+|           profile.component.css
+|           profile.component.html
+|           profile.component.ts
+|           
++---services
+|       auth.service.ts
+|       auth.spec.ts
+|       cart.service.ts
+|       cart.spec.ts
+|       cart.ts
+|       order.service.ts
+|       product.service.ts
+|       
+\---shared
+        shared-module.ts
+        

@@ -1,0 +1,42 @@
+<div class="container mt-4">
+
+    <div *ngIf="loading" class="text-center">
+        <div class="spinner-border"></div>
+    </div>
+
+    <div *ngIf="error" class="alert alert-danger text-center">
+        ❌ Không tìm thấy thông tin đơn hàng này.
+    </div>
+
+    <div *ngIf="order && !loading">
+
+        <h3 class="fw-bold mb-3">
+            📦 Đơn hàng #{{ order._id }}
+        </h3>
+
+        <p><strong>Khách hàng:</strong> {{ order.name }}</p>
+        <p><strong>SĐT:</strong> {{ order.phone }}</p>
+        <p><strong>Ngày đặt:</strong> {{ order.createdAt | date:'dd/MM/yyyy HH:mm' }}</p>
+        <p>
+            <strong>Trạng thái:</strong>
+            <span class="badge bg-info">{{ order.status }}</span>
+        </p>
+
+        <hr>
+
+        <h5>Dịch vụ đã chọn</h5>
+
+        <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between" *ngFor="let item of order.items">
+                <span>{{ item.name }} × {{ item.quantity }}</span>
+                <strong>{{ item.price * item.quantity | number }} ₫</strong>
+            </li>
+        </ul>
+
+        <h4 class="text-end text-danger fw-bold">
+            Tổng tiền: {{ order.totalPrice | number }} ₫
+        </h4>
+
+    </div>
+
+</div>

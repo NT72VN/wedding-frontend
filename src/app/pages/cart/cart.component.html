@@ -1,0 +1,58 @@
+<div class="container py-5 cart-page">
+    <h2 class="mb-4 text-center fw-bold">🛒 Danh sách đặt lịch</h2>
+
+    <div class="table-responsive shadow-sm rounded" *ngIf="cart.items.length > 0; else emptyCart">
+        <table class="table table-hover align-middle border">
+            <thead class="table-dark">
+                <tr>
+                    <th>Dịch vụ</th>
+                    <th class="text-center">Giá</th>
+                    <th class="text-center" width="150">Số lượng</th>
+                    <th class="text-center">Thành tiền</th>
+                    <th class="text-center"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let item of cart.items">
+                    <td class="fw-bold">{{ item.name }}</td>
+
+                    <td class="text-center">{{ item.price | number }} đ</td>
+                    <td class="text-center">
+                        <div class="d-flex justify-content-center align-items-center gap-2">
+                            <button class="btn btn-sm btn-outline-secondary" (click)="decrease(item)">-</button>
+                            <span class="fw-bold" style="min-width: 20px;">{{ item.quantity }}</span>
+                            <button class="btn btn-sm btn-outline-secondary" (click)="increase(item)">+</button>
+                        </div>
+                    </td>
+                    <td class="text-center text-danger fw-bold">
+                        {{ (item.price * item.quantity) | number }} đ
+                    </td>
+                    <td class="text-center">
+                        <button class="btn btn-sm btn-outline-danger" (click)="remove(item)">
+                            <i class="bi bi-trash"></i> Xóa
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="cart.items.length > 0" class="mt-4">
+        <h4 class="text-end fw-bold">
+            Tổng tiền tạm tính: <span class="text-danger">{{ cart.getTotalPrice() | number }} đ</span>
+        </h4>
+
+        <div class="text-end mt-4 gap-2 d-flex justify-content-end">
+            <a routerLink="/products" class="btn btn-outline-dark">Tiếp tục chọn dịch vụ</a>
+            <a routerLink="/checkout" class="btn btn-success px-4">Tiến hành đặt lịch</a>
+        </div>
+    </div>
+
+    <ng-template #emptyCart>
+        <div class="text-center py-5">
+            <h4 class="text-muted">Giỏ hàng của bạn đang trống</h4>
+            <a routerLink="/products" class="btn btn-primary mt-3">Xem danh sách dịch vụ</a>
+        </div>
+    </ng-template>
+</div>

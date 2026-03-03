@@ -1,0 +1,82 @@
+<div class="admin-page">
+    <div class="header-section d-flex justify-content-between align-items-end mb-5">
+        <div>
+            <h2 class="text-gold-gradient mb-1">Hệ Thống Thành Viên</h2>
+            <p class="text-muted mb-0 small text-uppercase ls-1">Sync with MongoDB Cloud</p>
+        </div>
+        <button class="btn-gold-add" (click)="showAddModal = true">
+            <i class="bi bi-person-plus me-2"></i>Thêm Tài Khoản
+        </button>
+    </div>
+
+    <div class="table-responsive-luxury">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Thông tin</th>
+                    <th>Quyền</th>
+                    <th>Trạng thái</th>
+                    <th class="text-center">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of users; let i = index">
+                    <td>#{{ i + 1 }}</td>
+                    <td>
+                        <div class="d-flex flex-column">
+                            <span class="fw-bold">{{ u.name }}</span>
+                            <span class="small text-muted">{{ u.email }}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <select [value]="u.role" class="form-select form-select-sm role-select-luxury"
+                            (change)="changeRole(u, $any($event.target).value)">
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </td>
+                    <td>
+                        <span class="status-indicator" [ngClass]="u.active ? 'active' : 'locked'">
+                            {{ u.active ? 'Hoạt động' : 'Đã khóa' }}
+                        </span>
+                    </td>
+                    <td class="text-center">
+                        <div class="d-flex justify-content-center gap-2">
+                            <button class="btn btn-sm btn-outline-info" (click)="viewDetails(u)">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-warning" (click)="toggleStatus(u)">
+                                <i class="bi" [ngClass]="u.active ? 'bi-lock' : 'bi-unlock'"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" (click)="deleteUser(u._id || u.id)">
+                                <i class="bi bi-trash3"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="custom-modal-overlay" *ngIf="selectedUser">
+        <div class="custom-modal-content border-gold">
+            <div class="modal-header-gold d-flex justify-content-between align-items-center">
+                <h3 class="m-0 fs-5 fw-bold">DỮ LIỆU TỪ MONGO</h3>
+                <button class="btn-close btn-close-white" (click)="selectedUser = null"></button>
+            </div>
+            <div class="p-4">
+                <div class="user-detail-card">
+                    <div class="detail-item"><strong>MongoDB ID:</strong> <span class="text-muted">{{ selectedUser._id
+                            }}</span></div>
+                    <div class="detail-item"><strong>Tài khoản:</strong> <span>{{ selectedUser.name }}</span></div>
+                    <div class="detail-item"><strong>Mật khẩu thực:</strong> <span class="text-danger fw-bold">{{
+                            selectedUser.password || 'N/A' }}</span></div>
+                    <div class="detail-item"><strong>Quyền:</strong> <span class="badge bg-dark text-gold">{{
+                            selectedUser.role }}</span></div>
+                </div>
+                <button class="btn btn-dark w-100 mt-4" (click)="selectedUser = null">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>

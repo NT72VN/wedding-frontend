@@ -1,0 +1,74 @@
+<section class="hero-sync">
+    <div class="hero-video-wrapper">
+        <video class="hero-video-bg" autoplay muted loop playsinline>
+            <source src="assets/videos/1.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-overlay-dark"></div>
+    </div>
+
+    <div class="hero-content-inner" data-aos="fade-up">
+        <h1 class="display-3 fw-bold">{{ product?.name }}</h1>
+        <div class="gold-divider mx-auto my-3"></div>
+        <p class="lead text-uppercase ls-2">Chi tiết dịch vụ đẳng cấp tại Duc & Co.</p>
+    </div>
+</section>
+
+<main class="detail-layout-area py-5" *ngIf="product">
+    <div class="container py-lg-5">
+        <div class="row g-5 align-items-center">
+
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="detail-img-wrapper">
+                    <img [src]="product.image" [alt]="product.name" class="img-fluid main-detail-img"
+                        onerror="this.src='assets/images/default-wedding.jpg'" />
+                    <div class="floating-badge">{{ product.category }}</div>
+                </div>
+            </div>
+
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="info-content-box ps-lg-4">
+                    <h2 class="detail-title mb-4">{{ product.name }}</h2>
+
+                    <div class="price-premium mb-4">
+                        <span class="label">Giá dịch vụ từ:</span>
+                        <span class="amount">{{ product.price | number }}</span>
+                        <span class="unit">VNĐ</span>
+                    </div>
+
+                    <p class="detail-description mb-5">
+                        {{ product.description }}
+                        <br><br>
+                        <i>* Chúng tôi cam kết mang lại trải nghiệm tinh tế nhất, cá nhân hóa theo từng yêu cầu riêng
+                            biệt của quý khách hàng để ngày trọng đại trở nên hoàn hảo.</i>
+                    </p>
+
+                    <div class="action-group d-flex gap-3">
+                        <button class="btn btn-luxury-gold px-5 py-3" (click)="addToCart()">
+                            <i class="bi bi-bag-plus me-2"></i> ĐẶT DỊCH VỤ
+                        </button>
+                        <a routerLink="/contact" class="btn btn-outline-dark px-4 py-3">
+                            TƯ VẤN NGAY
+                        </a>
+                    </div>
+
+                    <div class="features-list mt-5 pt-4 border-top">
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <i class="bi bi-check2-circle text-gold me-2"></i> Chuyên nghiệp
+                            </div>
+                            <div class="col-6 mb-3">
+                                <i class="bi bi-check2-circle text-gold me-2"></i> Tinh tế
+                            </div>
+                            <div class="col-6">
+                                <i class="bi bi-check2-circle text-gold me-2"></i> Đúng tiến độ
+                            </div>
+                            <div class="col-6">
+                                <i class="bi bi-check2-circle text-gold me-2"></i> Hỗ trợ 24/7
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

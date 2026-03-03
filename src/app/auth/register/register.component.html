@@ -1,0 +1,42 @@
+<div class="auth-container d-flex align-items-center justify-content-center"
+    style="min-height: 80vh; background: #f9f9f9;">
+    <div class="card shadow-lg p-4 bg-white rounded-4" style="max-width: 450px; width: 100%; border: none;">
+
+        <div class="text-center mb-4">
+            <h2 class="fw-bold text-uppercase" style="color: #c89b3c; letter-spacing: 2px;">Đăng ký</h2>
+            <div style="width: 60px; height: 3px; background: #c89b3c; margin: 10px auto;"></div>
+        </div>
+
+        <div class="form-body">
+            <div class="mb-3">
+                <label class="form-label small fw-bold text-muted">HỌ VÀ TÊN</label>
+                <input type="text" class="form-control" placeholder="Nhập tên của bạn" [(ngModel)]="user.name"
+                    name="name">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label small fw-bold text-muted">EMAIL</label>
+                <input type="email" class="form-control" placeholder="example@gmail.com" [(ngModel)]="user.email"
+                    name="email">
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label small fw-bold text-muted">MẬT KHẨU</label>
+                <input type="password" class="form-control" placeholder="********" [(ngModel)]="user.password"
+                    name="password">
+            </div>
+
+            <button class="btn btn-gold w-100 py-2 fw-bold" (click)="register()" [disabled]="loading"
+                style="background-color: #c89b3c; color: white; border: none; border-radius: 5px; transition: 0.3s;">
+                <span *ngIf="!loading">ĐĂNG KÝ NGAY</span>
+                <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+            </button>
+        </div>
+
+        <div class="text-center mt-4">
+            <p class="small text-muted">Bạn đã có tài khoản?
+                <a routerLink="/login" class="text-decoration-none fw-bold" style="color: #c89b3c;">Đăng nhập</a>
+            </p>
+        </div>
+    </div>
+</div>

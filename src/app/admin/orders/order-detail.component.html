@@ -1,0 +1,24 @@
+<div *ngIf="order">
+
+    <h2>🧾 Đơn hàng #{{ order.id }}</h2>
+
+    <p><b>Khách hàng:</b> {{ order.name }}</p>
+    <p><b>SĐT:</b> {{ order.phone }}</p>
+    <p><b>Ngày cưới:</b> {{ order.weddingDate }}</p>
+    <p><b>Ghi chú:</b> {{ order.note || 'Không có' }}</p>
+    <p><b>Trạng thái:</b> {{ order.status }}</p>
+
+    <hr>
+
+    <h3>Sản phẩm</h3>
+
+    <div *ngFor="let i of order.items" class="item">
+        {{ i.name }} × {{ i.quantity }}
+        = {{ i.price * i.quantity | number }} ₫
+    </div>
+
+    <hr>
+
+    <h3>Tổng tiền: {{ order.totalPrice | number }} ₫</h3>
+
+</div>

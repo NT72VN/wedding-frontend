@@ -1,0 +1,232 @@
+/* --- HERO SYNC (Tương tự trang Dịch vụ để đồng bộ) --- */
+.hero-sync {
+  position: relative;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.hero-video-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero-video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.hero-overlay-dark {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.6));
+  z-index: 2;
+}
+
+.hero-content-inner {
+  position: relative;
+  z-index: 3;
+  color: #fff;
+  text-align: center;
+}
+
+.gold-divider {
+  width: 80px;
+  height: 2px;
+  background: #d4a373;
+}
+
+/* --- DETAIL SECTION --- */
+.detail-layout-area {
+  background: #fff;
+  position: relative;
+  z-index: 10;
+}
+
+.detail-img-wrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+.main-detail-img {
+  transition: transform 1s ease;
+}
+
+.detail-img-wrapper:hover .main-detail-img {
+  transform: scale(1.05);
+}
+
+.floating-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #d4a373;
+  color: #fff;
+  padding: 6px 15px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Typography & Info */
+.detail-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.price-premium .label {
+  display: block;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.price-premium .amount {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #d4a373;
+}
+
+.detail-description {
+  line-height: 1.8;
+  color: #555;
+  font-size: 1.05rem;
+}
+
+/* Buttons */
+.btn-luxury-gold {
+  background: #d4a373;
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.btn-luxury-gold:hover {
+  background: #b88a5d;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(212, 163, 115, 0.3);
+}
+
+.text-gold {
+  color: #d4a373;
+}
+
+@media (max-width: 991px) {
+  .detail-title {
+    font-size: 2rem;
+  }
+  .hero-sync {
+    height: 50vh;
+  }
+}
+/* --- CHI TIẾT SẢN PHẨM LUXURY SYNC --- */
+
+.detail-layout-area {
+  background: #ffffff;
+  position: relative;
+  z-index: 10;
+  margin-top: -50px; /* Hiệu ứng đè nhẹ lên Hero video */
+  border-radius: 40px 40px 0 0;
+}
+
+.text-gold {
+  color: #c89b3c !important;
+}
+
+.gold-divider {
+  width: 100px;
+  height: 3px;
+  background: #c89b3c;
+}
+
+/* Hiệu ứng khung ảnh */
+.detail-img-wrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.main-detail-img {
+  transition: transform 0.8s ease;
+  width: 100%;
+  min-height: 500px;
+  object-fit: cover;
+}
+
+.detail-img-wrapper:hover .main-detail-img {
+  transform: scale(1.05);
+}
+
+/* Badge nổi */
+.floating-badge {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  background: #c89b3c;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 15px rgba(200, 155, 60, 0.4);
+}
+
+/* Giá tiền */
+.price-premium .amount {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #c89b3c;
+  font-family: 'Playfair Display', serif;
+}
+
+.price-premium .unit {
+  font-size: 1.2rem;
+  color: #c89b3c;
+  margin-left: 10px;
+}
+
+/* Nút bấm vàng đồng đồng bộ */
+.btn-luxury-gold {
+  background: #c89b3c;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.btn-luxury-gold:hover {
+  background: #b88a2e;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(200, 155, 60, 0.3);
+  color: white;
+}
+
+.btn-outline-dark {
+  border-radius: 50px;
+  border: 2px solid #111;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-dark:hover {
+  background: #111;
+  color: #fff;
+  transform: translateY(-3px);
+}

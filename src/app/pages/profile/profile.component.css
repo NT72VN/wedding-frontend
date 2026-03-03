@@ -1,0 +1,8 @@
+.card {
+  border-radius: 12px;
+}
+
+img {
+  object-fit: cover;
+  border: 3px solid #ffc107;
+}
