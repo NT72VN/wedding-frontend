@@ -1,0 +1,179 @@
+/* ===============================
+   HERO – GLOBAL (DÙNG CHUNG)
+================================ */
+
+:root {
+  --navbar-height: 72px;
+  --hero-height: calc(100vh - var(--navbar-height));
+
+  --primary-color: #c89b3c;
+  --text-light: #ffffff;
+}
+
+/* ===============================
+   HERO CONTAINER
+================================ */
+.hero {
+  position: relative;
+  width: 100%;
+  height: var(--hero-height);
+  min-height: 520px;
+  overflow: hidden;
+  background: #000;
+}
+
+/* ===============================
+   HERO VIDEO (FULL COVER)
+================================ */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+
+  filter: brightness(0.95);
+
+  pointer-events: none; /* 🔥 FIX CLICK */
+}
+
+/* ===============================
+   OVERLAY
+================================ */
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+
+  pointer-events: none; /* 🔥 FIX CLICK */
+}
+
+/* ===============================
+   HERO CONTENT
+================================ */
+.hero-content {
+  position: absolute;
+  z-index: 2;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  max-width: 900px;
+  width: 100%;
+  padding: 0 20px;
+
+  text-align: center;
+  color: var(--text-light);
+
+  animation: heroFadeUp 1.1s ease forwards;
+}
+
+/* ===============================
+   HERO TEXT
+================================ */
+.hero-content h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
+  text-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+/* ===============================
+   HERO CTA
+================================ */
+.hero-actions {
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.btn-hero-primary {
+  padding: 14px 36px;
+  background: var(--primary-color);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 30px;
+  transition: 0.3s ease;
+}
+
+.btn-hero-primary:hover {
+  background: #b88a2e;
+  transform: translateY(-2px);
+}
+
+.btn-hero-outline {
+  padding: 14px 36px;
+  border: 2px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 30px;
+  transition: 0.3s ease;
+}
+
+.btn-hero-outline:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* ===============================
+   HERO ANIMATION
+================================ */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 992px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --hero-height: 80vh;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+}
