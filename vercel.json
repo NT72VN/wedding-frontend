@@ -1,9 +1,13 @@
 {
     "buildCommand": "npm run build",
     "outputDirectory": "dist/wedding-frontend/browser",
+    "framework": null,
     "routes": [
         {
-            "src": "/(.*)",
+            "handle": "filesystem"
+        },
+        {
+            "src": "/.*",
             "dest": "/index.html"
         }
     ]
