@@ -1,5 +1,6 @@
 export interface Order {
-    id?: string;
+    _id?: string;  // Thêm dòng này để khớp với MongoDB
+    id?: string;   
     name: string;
     phone: string;
     weddingDate: string;
