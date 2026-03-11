@@ -5,22 +5,20 @@ import { Observable, BehaviorSubject, tap } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  // QUAN TRỌNG: Thay link localhost bằng link backend đã deploy của bạn
-  // Ví dụ: https://wedding-service-api.onrender.com/api/auth
-  private apiUrl = 'https://link-backend-da-deploy-cua-ban.com/api/auth'; 
-
+  // Đường dẫn gốc của API trên Render
+  private readonly baseUrl = 'https://wedding-service-gcin.onrender.com/api';
+  private apiUrl = `${this.baseUrl}/auth`;
   private currentUserSubject = new BehaviorSubject<User | null>(
     JSON.parse(localStorage.getItem('currentUser') || 'null')
   );
 
   constructor(private http: HttpClient) { }
 
-  // Hàm bổ trợ để lấy Token nhanh
   getToken(): string | null {
     return localStorage.getItem('token');
   }
 
-  /* ================= LOGIN ================= */
+  /* ================= XÁC THỰC ================= */
   login(email?: string, password?: string): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/login`, { email, password }).pipe(
       tap(response => {
@@ -33,16 +31,27 @@ export class AuthService {
     );
   }
 
+  register(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, data);
+  }
+
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }
 
-  register(data: any) {
-    return this.http.post(`${this.apiUrl}/register`, data);
+  /* ================= QUÊN MẬT KHẨU ================= */
+  // Fix lỗi "Lỗi gửi email" (500) trong ảnh bạn gửi
+  forgotPassword(email: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/forgot-password`, { email });
   }
 
+  resetPassword(email: string, otp: string, newPassword: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/reset-password`, { email, otp, newPassword });
+  }
+
+  /* ================= KIỂM TRA QUYỀN ================= */
   isLoggedIn(): boolean {
     return !!this.getToken();
   }
@@ -59,13 +68,5 @@ export class AuthService {
   updateProfile(user: User): void {
     localStorage.setItem('currentUser', JSON.stringify(user));
     this.currentUserSubject.next(user);
-  }
-
-  forgotPassword(email: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/forgot-password`, { email });
-  }
-
-  resetPassword(email: string, otp: string, newPassword: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/reset-password`, { email, otp, newPassword });
   }
 }
