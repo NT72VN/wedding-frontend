@@ -5,7 +5,9 @@ import { Observable, BehaviorSubject, tap } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = 'http://localhost:5000/api/auth';
+  // QUAN TRỌNG: Thay link localhost bằng link backend đã deploy của bạn
+  // Ví dụ: https://wedding-service-api.onrender.com/api/auth
+  private apiUrl = 'https://link-backend-da-deploy-cua-ban.com/api/auth'; 
 
   private currentUserSubject = new BehaviorSubject<User | null>(
     JSON.parse(localStorage.getItem('currentUser') || 'null')
@@ -36,9 +38,11 @@ export class AuthService {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }
+
   register(data: any) {
     return this.http.post(`${this.apiUrl}/register`, data);
   }
+
   isLoggedIn(): boolean {
     return !!this.getToken();
   }
@@ -52,11 +56,11 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-
   updateProfile(user: User): void {
     localStorage.setItem('currentUser', JSON.stringify(user));
     this.currentUserSubject.next(user);
   }
+
   forgotPassword(email: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/forgot-password`, { email });
   }
