@@ -37,11 +37,13 @@
                             </ng-container>
                         </span>
                     </td>
-                    <td>
-                      <a [routerLink]="['/my-orders', o._id || o.id]" class="btn btn-sm btn-outline-dark">
-    Chi tiết
-</a>
-                    </td>
+                    <td><small class="text-muted">#{{ ($any(o)._id || o.id)?.slice(-6) }}</small></td>
+
+<td>
+    <a [routerLink]="['/my-orders', $any(o)._id || o.id]" class="btn btn-sm btn-outline-dark">
+        Chi tiết
+    </a>
+</td>
                 </tr>
             </tbody>
         </table>
